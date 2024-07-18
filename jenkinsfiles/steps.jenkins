@@ -24,5 +24,55 @@ pipeline {
                 sh 'make'
             }
         }
+        stage('analysis') {
+            steps{
+                step([$class: 'InCodeBuilder', analyzeConfig: true,
+                analyzeJsLibs: false, analyzeLib: true, configUuid:
+                '75ed295c728a409a9c5dde85ad30b932', dirExc: '',
+                dirInc: '**', extrules: false, incremental: false,langs:
+                [[checked: false, name: 'Java, Scala, Kotlin', value:
+                'JAVA'], [checked: false, name: 'PHP', value: 'PHP'],
+                [checked: true, name: 'C#', value: 'CS'], [checked:
+                false, name: 'JavaScript', value: 'JAVASCRIPT'],
+                [checked: false, name: 'LotusScript', value: 'LOTUS'],
+                [checked: false, name: 'TypeScript', value:
+                'TYPESCRIPT'], [checked: false, name: 'VBScript', value:
+                'VBSCRIPT'], [checked: false, name: 'HTML5', value:
+                'HTML5'], [checked: false, name: 'Python', value:
+                'PYTHON'], [checked: true, name: 'C/C++', value: 'CCPP'],
+                [checked: false, name: 'ObjectiveC', value: 'OBJC'],
+                [checked: false, name: 'Swift', value: 'SWIFT'],
+                [checked: false, name: 'PL/SQL', value: 'PLSQL'],
+                [checked: false, name: 'TSQL', value: 'TSQL'],
+                [checked: false, name: 'ABAP', value: 'ABAP'], [checked:
+                false, name: '1C', value: 'ONES'], [checked: false, name:
+                'Apex', value: 'APEX'], [checked: false, name: 'Go',
+                value: 'GO'], [checked: false, name: 'Ruby', value:
+                'RUBY'], [checked: false, name: 'Rust', value: 'RUST'],
+                [checked: false, name: 'Groovy', value: 'GROOVY'],
+                [checked: false, name: 'Dart', value: 'DART'],
+                [checked: false, name: 'Delphi', value: 'DELPHI'],
+                [checked: false, name: 'VBA', value: 'VBA'], [checked:
+                false, name: 'Visual Basic 6', value: 'VB'], [checked:
+                false, name: 'Solidity', value: 'SOLIDITY'], [checked:
+                false, name: 'COBOL', value: 'COBOL']], mobileApp: false,
+                noBuild: true, projectUuid: '', ruleSets: [],
+                sourceEncoding: 'UTF8', visualStudio: false])
+            }
+        }
+        stage('report_extraction') {
+            steps{
+                step([$class: 'InCodePublisher', classificationVul: 'CR',
+                comparisonScan: '', criticalVul: true, f5: false,
+                fixedIssues: false, impervaSecure: false,
+                includeComparison: false, includeDeleted: false,
+                includeNotDecompiled: false, includeStd: false,
+                lowLevelVul: false, midLevelVul: true, modSecurity: false,
+                newIssues: true, savedIssues: true, scanDuration: true,
+                scanHistory: false, score: true, useLanguage: 'en',
+                vulTable: true])
+            }       
+        }    
     }
+                
 }
