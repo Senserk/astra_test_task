@@ -37,7 +37,7 @@ pipeline {
                 script {
                     sh '''
                     docker run --rm -v $(pwd)/astra_test_task:/fuzzing -w /fuzzing aflplusplus/aflplusplus \
-                    afl-fuzz -i /fuzzing/input -o /fuzzing/output -- ./trusty_reflection.out @@
+                    afl-fuzz -i /fuzzing/input -o /fuzzing/output -V 60 -- ./trusty_reflection.out @@
                     '''
                 }
             }
