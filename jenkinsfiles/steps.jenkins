@@ -18,6 +18,10 @@ pipeline {
                     branch: 'main',
                 )
                 sh 'rm -r .git'
+                sh 'mkdir test'
+                sh 'cd test'
+                sh 'mv ../* ./'
+                sh 'cd ../'
             }
         }
         stage('analysis') {
