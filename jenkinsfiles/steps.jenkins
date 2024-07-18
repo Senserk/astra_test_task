@@ -17,7 +17,7 @@ pipeline {
                     url: 'https://github.com/Senserk/astra_test_task.git',
                     branch: 'main',
                 )
-                sh 'rm .git'
+                sh 'rm -r .git'
             }
         }
         stage('analysis') {
