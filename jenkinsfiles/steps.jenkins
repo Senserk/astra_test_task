@@ -13,6 +13,7 @@ pipeline {
     stages {
         stage("First step") {
             steps {
+                git 'https://github.com/Senserk/astra_test_task'
                 sh 'make'
             }
         }
