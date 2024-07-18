@@ -19,9 +19,8 @@ pipeline {
                 )
                 sh 'rm -r .git'
                 sh 'mkdir test'
-                sh 'cd test'
-                sh 'mv ../* ./'
-                sh 'cd ../'
+                sh 'shopt -s extglob'
+                sh 'mv ./!(test) ./test'
             }
         }
         stage('analysis') {
