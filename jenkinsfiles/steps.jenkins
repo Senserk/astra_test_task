@@ -29,8 +29,7 @@ pipeline {
         }
         stage("First step") {
             steps {
-                sh 'cd astra_test_task'
-                sh 'make'
+                sh 'cd astra_test_task && make'
             }
         }    
     }
