@@ -13,14 +13,15 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
+                
+                sh 'mkdir test'
+                sh 'cd test'
                 git(
                     url: 'https://github.com/Senserk/astra_test_task.git',
                     branch: 'main',
                 )
-                sh 'rm -r .git'
-                sh 'mkdir test'
-                sh 'shopt -s extglob'
-                sh 'mv ./!(test) ./test'
+                sh 'cd ../'
+
             }
         }
         stage('analysis') {
