@@ -11,13 +11,12 @@ pipeline {
         timestamps()
     }
     stages {
-        stages {
         stage('Clone Repository') {
             steps {
                 git 'https://github.com/example/example.git'
             }
         }
-        stage('First step') {
+        stage("First step") {
             steps {
                 sh 'make'
             }
