@@ -11,9 +11,14 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("First step") {
+        stages {
+        stage('Clone Repository') {
             steps {
-                git 'https://github.com/Senserk/astra_test_task'
+                git 'https://github.com/example/example.git'
+            }
+        }
+        stage('First step') {
+            steps {
                 sh 'make'
             }
         }
