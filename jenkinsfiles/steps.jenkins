@@ -11,27 +11,37 @@ pipeline {
         timestamps()
     }
     stages {
-        stage('Clone Repository') {
+        stage('Code preparation') {
             steps {
                 sh 'rm -r ./*'
                 sh 'git clone https://github.com/Senserk/astra_test_task'
             }
         }
-        stage('analysis') {
+        stage('Start analyzing in AppScreener') {
             steps{
                 step([$class: 'AnalysisBuilder', analyzeJsLibs: false, analyzeLib: false, configUuid: '1cb90846-fd2d-4042-b61b-1746f705473b', dirExc: '', dirInc: '**/*', extrules: false, incremental: false, langs: [[checked: false, name: 'ABAP', value: 'ABAP'], [checked: false, name: 'Apex', value: 'APEX'], [checked: false, name: 'C#', value: 'CS'], [checked: true, name: 'C/C++', value: 'CCPP'], [checked: false, name: 'COBOL', value: 'COBOL'], [checked: false, name: 'Config files', value: 'CONFIG'], [checked: false, name: 'Dart', value: 'DART'], [checked: false, name: 'Delphi', value: 'DELPHI'], [checked: false, name: 'Go', value: 'GO'], [checked: false, name: 'Groovy', value: 'GROOVY'], [checked: false, name: 'HTML5', value: 'HTML5'], [checked: false, name: 'Java, Scala, Kotlin', value: 'JAVA'], [checked: false, name: 'JavaScript', value: 'JAVASCRIPT'], [checked: false, name: 'LotusScript', value: 'LOTUS'], [checked: false, name: 'Objective-C', value: 'OBJC'], [checked: false, name: 'Pascal', value: 'PASCAL'], [checked: false, name: 'PHP', value: 'PHP'], [checked: false, name: 'PL/SQL', value: 'PLSQL'], [checked: false, name: 'Python', value: 'PYTHON'], [checked: false, name: 'Perl', value: 'PERL'], [checked: false, name: 'Ruby', value: 'RUBY'], [checked: false, name: 'Rust', value: 'RUST'], [checked: false, name: 'Solidity', value: 'SOLIDITY'], [checked: false, name: 'Swift', value: 'SWIFT'], [checked: false, name: 'T-SQL', value: 'TSQL'], [checked: false, name: 'TypeScript', value: 'TYPESCRIPT'], [checked: false, name: 'VB.NET', value: 'VBNET'], [checked: false, name: 'VBA', value: 'VBA'], [checked: false, name: 'VBScript', value: 'VBSCRIPT'], [checked: false, name: 'Visual Basic 6', value: 'VB'], [checked: false, name: 'Vyper', value: 'VYPER'], [checked: false, name: '1C', value: 'ONES']], noBuild: false, projectUuid: 'e9f37a8f-7a3c-4b4e-9e8a-cc2dd2d113da', ruleSets: [], sourceEncoding: 'UTF-8', visualStudio: false])
             }
         }
-        stage('report_extraction') {
+        stage('Download report') {
             steps{
                 step([$class: 'AnalysisPublisher', classificationVul: 'CR', comparison: [entryNum: 0, entryNumVal: 1, fixed: false, included: false, newIssue: true, saved: true, scanSettings: true, scanUuid: ''], detailed: [comment: true, entriesSettings: [confirmed: true, notProcessed: true, rejected: true], entryNumDetailed: 0, entryNumDetailedVal: 1, included: true, jiraInfo: true, sourceCodeNum: 1, sourceCodeNumVal: 3, traceNum: 0], filter: [classFiles: true, critical: true, fuzzy: [critical: 4, included: false, info: 4, low: 4, medium: 4], info: true, jira: true, langs: [[checked: false, name: 'ABAP', value: 'ABAP'], [checked: false, name: 'Android', value: 'ANDROID'], [checked: false, name: 'Apex', value: 'APEX'], [checked: false, name: 'C#', value: 'CS'], [checked: true, name: 'C/C++', value: 'CCPP'], [checked: false, name: 'COBOL', value: 'COBOL'], [checked: false, name: 'Config files', value: 'CONFIG'], [checked: false, name: 'Dart', value: 'DART'], [checked: false, name: 'Delphi', value: 'DELPHI'], [checked: false, name: 'Go', value: 'GO'], [checked: false, name: 'Groovy', value: 'GROOVY'], [checked: false, name: 'HTML5', value: 'HTML5'], [checked: false, name: 'Java', value: 'JAVA'], [checked: false, name: 'JavaScript', value: 'JAVASCRIPT'], [checked: false, name: 'Kotlin', value: 'KOTLIN'], [checked: false, name: 'LotusScript', value: 'LOTUS'], [checked: false, name: 'Objective-C', value: 'OBJC'], [checked: false, name: 'Pascal', value: 'PASCAL'], [checked: false, name: 'PHP', value: 'PHP'], [checked: false, name: 'PL/SQL', value: 'PLSQL'], [checked: false, name: 'Python', value: 'PYTHON'], [checked: false, name: 'Perl', value: 'PERL'], [checked: false, name: 'Ruby', value: 'RUBY'], [checked: false, name: 'Rust', value: 'RUST'], [checked: false, name: 'Scala', value: 'SCALA'], [checked: false, name: 'Solidity', value: 'SOLIDITY'], [checked: false, name: 'Swift', value: 'SWIFT'], [checked: false, name: 'T-SQL', value: 'TSQL'], [checked: false, name: 'TypeScript', value: 'TYPESCRIPT'], [checked: false, name: 'VB.NET', value: 'VBNET'], [checked: false, name: 'VBA', value: 'VBA'], [checked: false, name: 'VBScript', value: 'VBSCRIPT'], [checked: false, name: 'Visual Basic 6', value: 'VB'], [checked: false, name: 'Vyper', value: 'VYPER'], [checked: false, name: '1C', value: 'ONES']], low: true, medium: true, standardLibs: true, waf: true], general: [contents: true, format: 'PDF', locale: 'ru', reportSettings: true], projInfo: [scanHistory: 0, scanHistoryVal: 1, securityLevelDynamics: true, vulnNumberDynamics: true], scanInfo: [fileStats: false, foundVulnChart: true, included: true, langStats: true, scanErrorInfo: true, scanSettings: true, typeVulnChart: true], table: [entriesSettings: [confirmed: true, notProcessed: true, rejected: true], entryNumTable: 0, entryNumTableVal: 1, included: true], waf: [entriesSettings: [confirmed: true, notProcessed: true, rejected: false], f5: true, imperva: true, included: true, modSec: true]])
             }       
         }
-        stage("First step") {
+        stage("Code building") {
             steps {
                 sh 'cd astra_test_task && make'
             }
         }    
+        stage('Fuzzing Test') {
+            steps {
+                script {
+                    sh '''
+                    docker run --rm -v $(pwd)/astra_test_task:/fuzzing -w /fuzzing aflplusplus/aflplusplus \
+                    afl-fuzz -i /fuzzing/input -o /fuzzing/output -- ./trusty_reflection.out @@
+                    '''
+                }
+            }
+        }
     }
                 
 }
