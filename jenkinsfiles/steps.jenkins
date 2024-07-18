@@ -13,7 +13,8 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                sh 'rm ./*'
+                sh 'rm -r ./*'
+                sh 'git clone https://github.com/Senserk/astra_test_task'
             }
         }
         stage('analysis') {
