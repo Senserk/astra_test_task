@@ -13,18 +13,15 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-               dir('source') {
-                        git(
-                            url: 'https://github.com/Senserk/astra_test_task.git',
-                            branch: 'main'
-                        )
-                    }
-
+                git(
+                    url: 'https://github.com/Senserk/astra_test_task/blob/main/bhaskara.c',
+                    branch: 'main',
+                )
             }
         }
         stage('analysis') {
             steps{
-                step([$class: 'AnalysisBuilder', analyzeJsLibs: false, analyzeLib: false, configUuid: '1cb90846-fd2d-4042-b61b-1746f705473b', dirExc: '', dirInc: '**/*', extrules: false, incremental: false, langs: [[checked: false, name: 'ABAP', value: 'ABAP'], [checked: false, name: 'Apex', value: 'APEX'], [checked: false, name: 'C#', value: 'CS'], [checked: true, name: 'C/C++', value: 'CCPP'], [checked: false, name: 'COBOL', value: 'COBOL'], [checked: false, name: 'Config files', value: 'CONFIG'], [checked: false, name: 'Dart', value: 'DART'], [checked: false, name: 'Delphi', value: 'DELPHI'], [checked: false, name: 'Go', value: 'GO'], [checked: false, name: 'Groovy', value: 'GROOVY'], [checked: false, name: 'HTML5', value: 'HTML5'], [checked: false, name: 'Java, Scala, Kotlin', value: 'JAVA'], [checked: false, name: 'JavaScript', value: 'JAVASCRIPT'], [checked: false, name: 'LotusScript', value: 'LOTUS'], [checked: false, name: 'Objective-C', value: 'OBJC'], [checked: false, name: 'Pascal', value: 'PASCAL'], [checked: false, name: 'PHP', value: 'PHP'], [checked: false, name: 'PL/SQL', value: 'PLSQL'], [checked: false, name: 'Python', value: 'PYTHON'], [checked: false, name: 'Perl', value: 'PERL'], [checked: false, name: 'Ruby', value: 'RUBY'], [checked: false, name: 'Rust', value: 'RUST'], [checked: false, name: 'Solidity', value: 'SOLIDITY'], [checked: false, name: 'Swift', value: 'SWIFT'], [checked: false, name: 'T-SQL', value: 'TSQL'], [checked: false, name: 'TypeScript', value: 'TYPESCRIPT'], [checked: false, name: 'VB.NET', value: 'VBNET'], [checked: false, name: 'VBA', value: 'VBA'], [checked: false, name: 'VBScript', value: 'VBSCRIPT'], [checked: false, name: 'Visual Basic 6', value: 'VB'], [checked: false, name: 'Vyper', value: 'VYPER'], [checked: false, name: '1C', value: 'ONES']], noBuild: false, projectUuid: 'e9f37a8f-7a3c-4b4e-9e8a-cc2dd2d113da', ruleSets: [], sourceEncoding: 'UTF-8', visualStudio: false])
+                step([$class: 'AnalysisBuilder', analyzeJsLibs: false, analyzeLib: false, configUuid: '1cb90846-fd2d-4042-b61b-1746f705473b', dirExc: '', dirInc: './**', extrules: false, incremental: false, langs: [[checked: false, name: 'ABAP', value: 'ABAP'], [checked: false, name: 'Apex', value: 'APEX'], [checked: false, name: 'C#', value: 'CS'], [checked: true, name: 'C/C++', value: 'CCPP'], [checked: false, name: 'COBOL', value: 'COBOL'], [checked: false, name: 'Config files', value: 'CONFIG'], [checked: false, name: 'Dart', value: 'DART'], [checked: false, name: 'Delphi', value: 'DELPHI'], [checked: false, name: 'Go', value: 'GO'], [checked: false, name: 'Groovy', value: 'GROOVY'], [checked: false, name: 'HTML5', value: 'HTML5'], [checked: false, name: 'Java, Scala, Kotlin', value: 'JAVA'], [checked: false, name: 'JavaScript', value: 'JAVASCRIPT'], [checked: false, name: 'LotusScript', value: 'LOTUS'], [checked: false, name: 'Objective-C', value: 'OBJC'], [checked: false, name: 'Pascal', value: 'PASCAL'], [checked: false, name: 'PHP', value: 'PHP'], [checked: false, name: 'PL/SQL', value: 'PLSQL'], [checked: false, name: 'Python', value: 'PYTHON'], [checked: false, name: 'Perl', value: 'PERL'], [checked: false, name: 'Ruby', value: 'RUBY'], [checked: false, name: 'Rust', value: 'RUST'], [checked: false, name: 'Solidity', value: 'SOLIDITY'], [checked: false, name: 'Swift', value: 'SWIFT'], [checked: false, name: 'T-SQL', value: 'TSQL'], [checked: false, name: 'TypeScript', value: 'TYPESCRIPT'], [checked: false, name: 'VB.NET', value: 'VBNET'], [checked: false, name: 'VBA', value: 'VBA'], [checked: false, name: 'VBScript', value: 'VBSCRIPT'], [checked: false, name: 'Visual Basic 6', value: 'VB'], [checked: false, name: 'Vyper', value: 'VYPER'], [checked: false, name: '1C', value: 'ONES']], noBuild: false, projectUuid: 'e9f37a8f-7a3c-4b4e-9e8a-cc2dd2d113da', ruleSets: [], sourceEncoding: 'UTF-8', visualStudio: false])
             }
         }
         stage('report_extraction') {
