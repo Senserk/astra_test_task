@@ -1,3 +1,0 @@
-mkdir inputs
-echo "test command" > inputs/input1
-echo "another command" > inputs/input2
