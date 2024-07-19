@@ -21,7 +21,7 @@ trusty_reflection.o: trusty_reflection.c
 	$(CC) -O0 -g -Wall $(CFALGS) -c -o trusty_reflection.o trusty_reflection.c
 
 bhaskara.o: bhaskara.c
-	$(CC) -O0 -g -Wall $(CFALGS) -c -o bhaskara.o bhaskara.c
+	$(CC) -O0 -g -Wall -Wno-unused-variable -Wno-unused-but-set-variable -Wno-error -Wno-return-type -Wno-string-plus-int -Wno-int-conversion -Wno-incompatible-pointer-types -c -o bhaskara.o bhaskara.c
 
 clean:
 	rm *.o
