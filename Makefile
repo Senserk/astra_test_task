@@ -4,7 +4,7 @@ run:
 	 
 
 build: clever_williams.o kirch.o print_kirch.o trusty_reflection.o bhaskara.o
-	$(CC) -O0 -g -Wall -o trusty_reflection.out trusty_reflection.o bhaskara.o kirch.o print_kirch.o clever_williams.o
+	$(CC)  $(CFLAGS) -O0 -g -Wall -o trusty_reflection.out trusty_reflection.o bhaskara.o kirch.o print_kirch.o clever_williams.o
 	rm *.o
 
 clever_williams.o: clever_williams.c
