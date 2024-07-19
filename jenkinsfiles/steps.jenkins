@@ -36,8 +36,8 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    docker run --rm -u $(id -u jenkins):$(id -g jenkins) -v $(pwd)/astra_test_task:/fuzzing -w /aflplusplus/aflplusplus \
-                    bash -c "CC=afl-clang CXX=afl-clang++ make && afl-fuzz -i /fuzzing/input -o /fuzzing/output -V 60 -- ./trusty_reflection.out @@"
+                    docker run --rm -u 114:119 -v /var/lib/jenkins/workspace/astra_test_task/astra_test_task:/fuzzing -w /fuzzing aflplusplus/aflplusplus bash -c "CC=afl-clang CXX=afl-clang++ make && afl-fuzz -i /fuzzing/input -o /fuzzing/output -V 60 -- ./trusty_reflection.out @@"
+
                     '''
                 }
             }
