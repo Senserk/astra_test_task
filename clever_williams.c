@@ -268,34 +268,24 @@ int bracket_screened(list_type lst,int index){
 }
 
 //returns -1 if brackets are balanced
-int check_bracket_balance(list_type lst){
-    int br_count[3];
-    int br_counter = 0;
+int check_bracket_balance(list_type lst) {
     int br_balance = 0;
     int list_len = get_lexem_list_len(lst);
-    for (int i =0;i<list_len;i++){
-        if (strcmp(lst[i],"(")== 0){
-            br_count[br_counter]=i;
-            br_counter++;
-            if (!bracket_screened(lst,i))
+
+    for (int i = 0; i < list_len; i++) {
+        if (strcmp(lst[i], "(") == 0) {
+            if (!bracket_screened(lst, i))
                 br_balance++;
-        }
-        if (strcmp(lst[i],")")== 0){
-            br_count[br_counter]=i;
-            br_counter++;
-            if (!bracket_screened(lst,i))
+        } else if (strcmp(lst[i], ")") == 0) {
+            if (!bracket_screened(lst, i))
                 br_balance--;
         }
 
-        if (br_balance<0)
+        if (br_balance < 0)
             return 0;
     }
-    if (br_count[0] == 0)
-        br_counter = 0;
-    if (br_balance>0)
-        return 0;
-    else
-        return 1;
+
+    return br_balance == 0;
 }
 
 

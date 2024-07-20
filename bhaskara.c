@@ -65,7 +65,7 @@ char* itoa(uid_t num){
     if (num == 0)
     {
     	strlen++;
-    	str = realloc(str,sizeof(char)*strlen);
+    	str = realloc(str, sizeof(char) * (strlen + 1));
         str[i++] = '0';
         str[i] = '\0';
         return str;
@@ -147,11 +147,11 @@ void parse_args(char **argv){
 			tmp = argv[index];
 			argv[index] = substitute_arg(argv[index]);
 			free(tmp);
-			free(args);
 		}
 		strncpy(args, "\n", 2);
 		index++;
 	}
+	free(args);
 	return;
 }
 
@@ -390,7 +390,7 @@ int impl_exit(cmd_link cmd){
 }
 
 int run_impl_cmd(cmd_link cmd,int impl_cmd_code,int in_background){
-	int exit_status;
+	int exit_status = -1;
 	char *path = NULL;
 
 	if ((in_background == 1) && (impl_cmd_code!=1))

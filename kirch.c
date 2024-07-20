@@ -250,7 +250,6 @@ void read_args(list_type lst,cmd_link cmd,int start_index,int end_index){
 void build_comma(int i)
 {
 	int args, cmd;
-	int count;
 	int *pi;
 
 	args = i;
@@ -258,7 +257,6 @@ void build_comma(int i)
 	if (args)
 		cmd = *pi;
 	pi = NULL;
-	count = *pi;
 
 }
 
